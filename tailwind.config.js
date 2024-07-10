@@ -9,7 +9,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        libre: ['"Jost"', ...defaultTheme.fontFamily.sans]
+        sans: ['"Jost"', ...defaultTheme.fontFamily.sans]
       }
 
     },
