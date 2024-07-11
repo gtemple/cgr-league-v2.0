@@ -28,12 +28,18 @@ export default function useGetUsers() {
   }, []);
 
   async function getHumanDrivers() {
-    const { data } = await supabase.from("users").select().order("first_name").eq("human", true);
+    const { data } = await supabase
+      .from("users")
+      .select()
+      .order("first_name")
+      .eq("human", true);
     //@ts-expect-error will fix later
     setHumanDriversData(data);
+    setLoaded(true);
   }
 
   return {
     humanDriversData,
+    loaded,
   };
 }
