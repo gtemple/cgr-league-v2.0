@@ -36,7 +36,7 @@ const Navbar = () => {
             className="bg-gradient-to-b from-neutral-800 to-neutral-600  text-sky-100 p-3 rounded-md mt-1 "
           >
             {humanDriversData.map((humanDriver) => (
-              <MenuItem>
+              <MenuItem key={humanDriver.id}>
                 <a
                   className="block data-[focus]:bg-blue-100 data-[focus]:text-neutral-600 data-[focus]:px-auto data-[focus]:rounded-md p-2"
                   href="/settings"
