@@ -19,12 +19,23 @@ const Navbar = () => {
 
   return (
     <div
-      className="w-screen flex-initial object-top flex justify-between p-2 bg-gray-800 text-sky-100
+      className="flex-initial object-top flex justify-between p-2 bg-gray-800 text-sky-100
     border-b border-solid"
     >
-      <div>CGR League</div>
-      <div className="[&_*]:mx-4">
-        <Menu>
+      <div className="mx-4">CGR League</div>
+      <button
+        data-collapse-toggle="navbar-hamburger"
+        type="button"
+        className="inline-flex items-center justify-center p-2 w-10 h-10 text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+        aria-controls="navbar-hamburger"
+        aria-expanded="false"
+      >
+        <span className="sr-only">Open main menu</span>
+          button
+      </button>
+      <div className="md:flex-row flex-col w-full">
+        <div>
+        <Menu as='div' className='mx-4 flex-col'>
           <MenuButton
             className="p-2 rounded-md data-[active]:bg-neutral-800 uppercase hover:text-sky-300
             data-[active]:outline-2 data-[active]:outline data-[active]:outline-slate-50 data-[active]:text-sky-300"
@@ -82,6 +93,7 @@ const Navbar = () => {
       <button onClick={() => darkModeHandler()}>
         {dark ? "dark" : "light"}
       </button>
+      </div>
     </div>
   );
 };
