@@ -52,7 +52,7 @@ const Podium = ({ podiumResults }: { podiumResults: FormattedPodiums }) => {
   }, [podiumResults]);
 
   return (
-    <div className="flex justify-between overflow-x-auto w-full m-0.5">
+    <div className="flex overflow-x-auto w-full bg-blue-400">
       {!podiumKeys
         ? null
         : podiumKeys.map((race) => {
@@ -69,24 +69,27 @@ const Podium = ({ podiumResults }: { podiumResults: FormattedPodiums }) => {
             return (
               <div
                 key={race}
-                className="border rounded-md border-solid py-2 bg-gradient-to-r from-gray-800 to-gray-700 text-sky-100"
+                className="border rounded-md border-solid border-blue-300 p-2 bg-gradient-to-r from-gray-800 to-gray-700 text-sky-100
+                md:min-w-72
+                min-w-full"
               >
-                <div className="flex justify-center text-lg font-semibold uppercase">
+                <div className="flex justify-center text-sm font-semibold uppercase">
                   {podiumResults[race]["3"]["track"]} {podiumResults[race]["3"]["sprint"] && ('(Sprint)')}
                 </div>
-                <div className="flex">
+                <div className="flex flex-col">
                   <div className="flex items-center gap-3 m-1">
                     <div className="overflow-hidden outline outline-yellow-500 w-14 h-10 m-1 rounded-full">
                       <img className="object-top" src={imageFirst} />
                     </div>
                     <div>
                       <div className="uppercase text-sm">
-                        {podiumResults[race]["1"]["name"]}
+                        <span className='text-[8px] font-semibold'>1st</span> {podiumResults[race]["1"]["name"]}
                       </div>
                       <div className="flex flex-row mt-1 gap-2">
                         {checkAchievements({
                           fastest: podiumResults[race]["1"]["fastest_lap"],
                           dotd: podiumResults[race]["1"]["dotd"],
+                          //@ts-expect-error fix later
                           pole: podiumResults[race]["1"]["pole_position"],
                         })}
                       </div>
@@ -98,12 +101,13 @@ const Podium = ({ podiumResults }: { podiumResults: FormattedPodiums }) => {
                     </div>
                     <div>
                       <div className="uppercase text-sm">
-                        {podiumResults[race]["2"]["name"]}
+                      <span className='text-[8px] font-semibold'>2nd</span> {podiumResults[race]["2"]["name"]}
                       </div>
                       <div className="flex flex-row mt-1 gap-2">
                         {checkAchievements({
                           fastest: podiumResults[race]["2"]["fastest_lap"],
                           dotd: podiumResults[race]["2"]["dotd"],
+                          //@ts-expect-error fix
                           pole: podiumResults[race]["2"]["pole_position"],
                         })}
                       </div>
@@ -115,12 +119,13 @@ const Podium = ({ podiumResults }: { podiumResults: FormattedPodiums }) => {
                     </div>
                     <div>
                       <div className="uppercase text-sm">
-                        {podiumResults[race]["3"]["name"]}
+                      <span className='text-[8px] font-semibold'>3rd</span> {podiumResults[race]["3"]["name"]}
                       </div>
                       <div className="flex flex-row mt-1 gap-2">
                         {checkAchievements({
                           fastest: podiumResults[race]["3"]["fastest_lap"],
                           dotd: podiumResults[race]["3"]["dotd"],
+                          //@ts-expect-error fix later
                           pole: podiumResults[race]["3"]["pole_position"],
                         })}
                       </div>

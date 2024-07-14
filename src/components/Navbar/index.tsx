@@ -27,28 +27,27 @@ const Navbar = () => {
   return (
     <div
       className="flex-initial object-top flex justify-between p-2 bg-gray-800 text-sky-100
-    border-b border-solid"
+    border-b border-solid border-blue-300" 
     >
-      <div className="mx-4">CGR League</div>
+      <div className="mx-1">CGR League</div>
       {width < 768 && (
         <button
           onClick={() => navOpenHandler()}
-          className="absolute top-0 right-0 px-8 py-8"
         >
           Hamburger
         </button>
       )}
 
-      {navOpen ? (
+      {navOpen  || width > 768 ? (
         <div
-          className="flex md:flex-row w-full flex-col md:static absolute
-                      bg-slate-300 md:bg-inherit
-                      md:m-0 m-3 
-                      z-2 md:inset-0 top-0
+          className="flex flex-col absolute bg-slate-300 w-screen gap-3 top-0 left-0 right-0 py-4
+                    md:flex-row md:static md:inset-0 md:top-0 md:bg-inherit md:py-0 md:justify-around
       "
         >
-          <button onClick={() => navOpenHandler()}>x</button>
+          {navOpen && width < 768 ? (<button onClick={() => navOpenHandler()} className='text-end mx-4'>x</button>): null}
+          <div className='flex md:flex-none flex-col md:flex-row'>
           <Menu>
+            
             <MenuButton
               className="p-2 rounded-md data-[active]:bg-neutral-800 uppercase hover:text-sky-300
             data-[active]:outline-2 data-[active]:outline data-[active]:outline-slate-50 data-[active]:text-sky-300"
@@ -103,6 +102,7 @@ const Navbar = () => {
               </MenuItem>
             </MenuItems>
           </Menu>
+          </div>
           <button onClick={() => darkModeHandler()}>
             {dark ? "dark" : "light"}
           </button>{" "}
