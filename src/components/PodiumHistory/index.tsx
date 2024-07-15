@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import useGetSeasonPodiums from "../../const/hooks/useGetSeasonPodiums";
 import { SeasonPodiums } from "../../const/interfaces/interfaces";
+import Loading from "../Loading";
 
 interface FormattedPodiums {
   [key: string]: {
@@ -144,7 +145,7 @@ const Podium = ({ podiumResults }: { podiumResults: FormattedPodiums }) => {
 };
 
 const PodiumHistory = () => {
-  const { seasonPodiums } = useGetSeasonPodiums(7);
+  const { seasonPodiums, loaded } = useGetSeasonPodiums(7);
 
   const filteredPodiums = (results: SeasonPodiums[]) => {
     const podiums: FormattedPodiums = {};
@@ -179,8 +180,9 @@ const PodiumHistory = () => {
   seasonPodiums.length > 0 && console.log(filteredPodiums(seasonPodiums));
   return (
     <div className="w-full">
-      <Podium podiumResults={podiumResults} />
-      <div className="w-screen flex content-center bg-gradient-to-r from-gray-800 to-gray-700 text-sky-100 h-10 gap-5 flex-wrap px-4">
+      {!loaded ? <div><Loading /></div> : <Podium podiumResults={podiumResults} />}
+
+      <div className="w-screen flex content-center bg-gradient-to-r from-gray-800 to-gray-700 text-sky-100 h-8 gap-5 flex-wrap px-4 text-xs">
         <span>
           <span>Fastest Lap</span>
           <div className="w-4 h-1 bg-purple-500"></div>

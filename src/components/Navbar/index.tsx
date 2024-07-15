@@ -27,10 +27,10 @@ const Navbar = () => {
 
   return (
     <div
-      className="flex-initial object-top flex justify-between p-2 bg-gray-800 text-sky-100
+      className=" flex flex-initial object-top justify-between p-2 bg-gray-800 text-sky-100
     border-b border-solid border-blue-300"
     >
-      <div className="mx-1">CGR League</div>
+      <div className="mx-1 w-24 content-center">CGR League</div>
       {width < 768 && (
         <button onClick={() => navOpenHandler()}>
           <GiHamburgerMenu />
@@ -48,18 +48,18 @@ const Navbar = () => {
               x
             </button>
           ) : null}
-          <div className="flex flex-col md:flex-row gap-10">
+          <div className="flex flex-col justify-center mx-auto md:flex-row gap-10">
             <Menu>
               <MenuButton
-                className="p-2 rounded-md uppercase hover:text-sky-300 max-w-60
-            data-[active]:outline-2 data-[active]:outline data-[active]:outline-slate-600 data-[active]:text-sky-300"
+                className="p-2 rounded-md uppercase hover:text-sky-300 w-screen md:w-32
+            data-[active]:outline-2 md:data-[active]:outline data-[active]:outline-slate-600 data-[active]:text-sky-300"
               >
                 Drivers
               </MenuButton>
               <MenuItems
                 anchor="bottom"
                 transition
-                className="bg-gradient-to-b bg-gray-800 text-sky-100 p-3 rounded-md mt-5 w-72 "
+                className="bg-gradient-to-b bg-gray-800 text-sky-100 p-3 rounded-sm md:mt-2 md:w-72 w-screen outline outline-1 "
               >
                 {humanDriversData.map((humanDriver) => (
                   <MenuItem key={humanDriver.id}>
