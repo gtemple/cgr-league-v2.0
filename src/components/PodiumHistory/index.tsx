@@ -12,7 +12,7 @@ interface FormattedPodiums {
       name: string;
       avatar: string;
       track: string;
-      sprint: boolean,
+      sprint: boolean;
     };
   };
 }
@@ -20,7 +20,7 @@ interface FormattedPodiums {
 const checkAchievements = (achievement: {
   fastest: boolean;
   dotd: boolean;
-  pole: boolean,
+  pole: boolean;
 }) => {
   let fastestClass = "w-3 h-1";
   let dotdClass = "w-3 h-1";
@@ -74,7 +74,8 @@ const Podium = ({ podiumResults }: { podiumResults: FormattedPodiums }) => {
                 min-w-full"
               >
                 <div className="flex justify-center text-sm font-semibold uppercase">
-                  {podiumResults[race]["3"]["track"]} {podiumResults[race]["3"]["sprint"] && ('(Sprint)')}
+                  {podiumResults[race]["3"]["track"]}{" "}
+                  {podiumResults[race]["3"]["sprint"] && "(Sprint)"}
                 </div>
                 <div className="flex flex-col">
                   <div className="flex items-center gap-3 m-1">
@@ -83,7 +84,8 @@ const Podium = ({ podiumResults }: { podiumResults: FormattedPodiums }) => {
                     </div>
                     <div>
                       <div className="uppercase text-sm">
-                        <span className='text-[8px] font-semibold'>1st</span> {podiumResults[race]["1"]["name"]}
+                        <span className="text-[8px] font-semibold">1st</span>{" "}
+                        {podiumResults[race]["1"]["name"]}
                       </div>
                       <div className="flex flex-row mt-1 gap-2">
                         {checkAchievements({
@@ -101,7 +103,8 @@ const Podium = ({ podiumResults }: { podiumResults: FormattedPodiums }) => {
                     </div>
                     <div>
                       <div className="uppercase text-sm">
-                      <span className='text-[8px] font-semibold'>2nd</span> {podiumResults[race]["2"]["name"]}
+                        <span className="text-[8px] font-semibold">2nd</span>{" "}
+                        {podiumResults[race]["2"]["name"]}
                       </div>
                       <div className="flex flex-row mt-1 gap-2">
                         {checkAchievements({
@@ -119,7 +122,8 @@ const Podium = ({ podiumResults }: { podiumResults: FormattedPodiums }) => {
                     </div>
                     <div>
                       <div className="uppercase text-sm">
-                      <span className='text-[8px] font-semibold'>3rd</span> {podiumResults[race]["3"]["name"]}
+                        <span className="text-[8px] font-semibold">3rd</span>{" "}
+                        {podiumResults[race]["3"]["name"]}
                       </div>
                       <div className="flex flex-row mt-1 gap-2">
                         {checkAchievements({
@@ -163,7 +167,7 @@ const PodiumHistory = () => {
           name: `${result.users.first_name} ${result.users.last_name}`,
           avatar: result.users.profile_image,
           track: result.tracks.name,
-          sprint: result.sprint
+          sprint: result.sprint,
         };
       }
     });
@@ -176,7 +180,20 @@ const PodiumHistory = () => {
   return (
     <div className="w-full">
       <Podium podiumResults={podiumResults} />
-      hey
+      <div className="w-screen flex content-center bg-gradient-to-r from-gray-800 to-gray-700 text-sky-100 h-10 gap-5 flex-wrap px-4">
+        <span>
+          <span>Fastest Lap</span>
+          <div className="w-4 h-1 bg-purple-500"></div>
+        </span>
+        <span>
+          <span>Driver of the day</span>
+          <div className="w-4 h-1 bg-green-500"></div>
+        </span>
+        <span>
+          <span>Pole Position</span>
+          <div className="w-4 h-1 bg-blue-300"></div>
+        </span>
+      </div>
     </div>
   );
 };
